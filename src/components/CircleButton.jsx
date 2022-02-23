@@ -1,24 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import Icon from './Icon';
 
 const CircleButton = (props) => {
-  const { text, style } = props;
+  const { name, size, style } = props;
   return (
     <View style={[styles.circleButton, style]}>
-      <Text style={styles.circleButtonText}>{text}</Text>
+      <Icon name={name} size={size} color='white' />
     </View>
   );
 };
 
 CircleButton.propTypes = {
-  text: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   style: PropTypes.shape(),
+  size: PropTypes.number,
 };
 
-CircleButton.deffaultProps = {
+CircleButton.defaultProps = {
   style: null,
-};
+  size: 32,
+}
 
 const styles = StyleSheet.create({
   circleButton: {

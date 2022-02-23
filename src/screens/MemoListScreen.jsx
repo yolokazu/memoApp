@@ -7,9 +7,9 @@ import MemoList from '../components/MemoList';
 const MemoListScreen = () => {
   return (
     <View style={styles.container}>
-      <AppBar />
+      <AppBar showLogoutBtn />
       <MemoList />
-      <CircleButton text='+' />
+      <CircleButton name='plus' size={32} />
     </View>
   );
 };

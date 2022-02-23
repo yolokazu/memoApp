@@ -1,16 +1,26 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
-const AppBar = () => {
+const AppBar = (props) => {
+  const { showLogoutBtn } = props;
   return (
     <View style={styles.appBar}>
       <View style={styles.appBarInner}>
         <Text style={styles.appBarTitle}>Memo App</Text>
-        <Text style={styles.appBarRight}>Log out</Text>
+        {showLogoutBtn && <Text style={styles.appBarRight}>Log out</Text>}
       </View>
     </View>
   );
 }
+
+AppBar.propTypes = {
+  showLogoutBtn: PropTypes.bool,
+};
+
+AppBar.defaultProps = {
+  showLogoutBtn: false,
+};
 
 const styles = StyleSheet.create({
   appBar: {

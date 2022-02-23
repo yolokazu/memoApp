@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Icon from './Icon';
 
 const MemoList = () => {
   return (
@@ -10,7 +11,7 @@ const MemoList = () => {
           <Text style={styles.memoListItemDate}>2022/02/21 22:00</Text>
         </View>
         <View>
-          <Text>X</Text>
+          <Icon name='delete' size={24} color='#B0B0B0' />
         </View>
       </View>
 
@@ -20,7 +21,7 @@ const MemoList = () => {
           <Text style={styles.memoListItemDate}>2022/02/21 22:00</Text>
         </View>
         <View>
-          <Text>X</Text>
+          <Icon name='delete' size={24} color='#B0B0B0' />
         </View>
       </View>
 
@@ -30,7 +31,7 @@ const MemoList = () => {
           <Text style={styles.memoListItemDate}>2022/02/21 22:00</Text>
         </View>
         <View>
-          <Text>X</Text>
+          <Icon name='delete' size={24} color='#B0B0B0' />
         </View>
       </View>
     </View>
