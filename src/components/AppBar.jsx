@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function AppBar() {
+const AppBar = () => {
   return (
     <View style={styles.appBar}>
-        <View style={styles.appBarInner}>
-          <Text style={styles.appBarTitle}>Memo App</Text>
-          <Text style={styles.appBarRight}>Log out</Text>
-        </View>
+      <View style={styles.appBarInner}>
+        <Text style={styles.appBarTitle}>Memo App</Text>
+        <Text style={styles.appBarRight}>Log out</Text>
       </View>
+    </View>
   );
 }
 
@@ -39,3 +39,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+export default AppBar;

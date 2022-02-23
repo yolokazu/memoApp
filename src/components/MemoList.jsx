@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-export default function MemoList() {
+const MemoList = () => {
   return (
     <View>
       <View style={styles.memoListItem}>
@@ -60,3 +60,5 @@ const styles = StyleSheet.create({
     color: '#848484',
   },
 });
+
+export default MemoList;
