@@ -1,16 +1,19 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, KeyboardAvoidingView, Alert } from 'react-native';
-import AppBar from '../components/AppBar';
+import { View, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native';
 import CircleButton from '../components/CircleButton';
 
-const MemoEditScreen = () => {
+const MemoEditScreen = (props) => {
+  const { navigation } = props;
   return (
     <KeyboardAvoidingView style={styles.container} behavior='height'>
-      <AppBar />
       <View style={styles.inputContainer}>
         <TextInput value='TEST' multiline style={styles.input} />
       </View>
-      <CircleButton name='check' size={44} />
+      <CircleButton
+        name='check'
+        size={44}
+        onPress={() => { navigation.goBack() }}
+      />
     </KeyboardAvoidingView>
   );
 };
