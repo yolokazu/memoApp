@@ -20,7 +20,7 @@ const Icon = (props) => {
 };
 
 Icon.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.oneOf(['plus', 'delete', 'pencil', 'check']).isRequired,
   size: PropTypes.number,
   color: PropTypes.string,
 };
