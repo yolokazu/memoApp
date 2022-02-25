@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native';
+import { View, StyleSheet, TextInput, KeyboardAvoidingView, Alert } from 'react-native';
 import AppBar from '../components/AppBar';
 import CircleButton from '../components/CircleButton';
 

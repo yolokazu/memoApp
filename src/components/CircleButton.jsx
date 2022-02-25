@@ -1,14 +1,17 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import Icon from './Icon';
 
 const CircleButton = (props) => {
-  const { name, size, style } = props;
+  const { name, size, style, onPress } = props;
   return (
-    <View style={[styles.circleButton, style]}>
+    <TouchableOpacity
+      style={[styles.circleButton, style]}
+      onPress={onPress}
+    >
       <Icon name={name} size={size} color='white' />
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -16,12 +19,14 @@ CircleButton.propTypes = {
   name: PropTypes.string.isRequired,
   style: PropTypes.shape(),
   size: PropTypes.number,
+  onPress: PropTypes.func,
 };
 
 CircleButton.defaultProps = {
   style: null,
   size: 32,
-}
+  onPress: null,
+};
 
 const styles = StyleSheet.create({
   circleButton: {
