@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import firebase from 'firebase';
 
@@ -9,15 +9,28 @@ const LogInScreen = (props) => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
 
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        navigateToList();
+      }
+    });
+    return unsubscribe;
+  }, []);
+
+  const navigateToList = () => {
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'List' }],
+    });
+  };
+
   const handleOnPress = () => {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const { user } = userCredential;
         console.log(user.uid);
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'List' }],
-        });
+        navigateToList();
       })
       .catch((error) => {
         console.log(error.code, error.message);

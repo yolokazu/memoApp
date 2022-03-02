@@ -5,6 +5,7 @@ import Icon from './Icon';
 
 const MemoList = () => {
   const navigation = useNavigation();
+
   return (
     <View>
       <TouchableOpacity
