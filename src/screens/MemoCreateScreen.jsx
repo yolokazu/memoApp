@@ -1,18 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native';
 import CircleButton from '../components/CircleButton';
+import firebase from 'firebase';
 
 const MemoCreateScreen = (props) => {
   const { navigation } = props;
+  const [ bodyText, setBodyText ] = useState('');
+
+  const handleOnPress = () => {
+    const { currentUser } = firebase.auth();
+    const db = firebase.firestore();
+    const ref = db.collection(`users/${currentUser.uid}/memos`);
+    ref.add({
+      bodyText,
+      updatedAt: new Date(),
+     })
+      .then((docRef) => {
+        console.log('created', docRef.id);
+        navigation.goBack();
+      })
+      .catch((error) => {
+        console.log('error', error)
+      });
+  }
+
   return (
     <KeyboardAvoidingView style={styles.container} behavior='height'>
       <View style={styles.inputContainer}>
-        <TextInput value='' multiline style={styles.input} />
+        <TextInput
+          value={bodyText}
+          onChangeText={setBodyText}
+          multiline
+          style={styles.input}
+          autoFocus
+        />
       </View>
       <CircleButton
         name='check'
         size={44}
-        onPress={() => navigation.goBack() }
+        onPress={handleOnPress}
       />
     </KeyboardAvoidingView>
   );
