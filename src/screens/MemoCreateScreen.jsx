@@ -10,7 +10,7 @@ const MemoCreateScreen = (props) => {
   const handleOnPress = () => {
     const { currentUser } = firebase.auth();
     const db = firebase.firestore();
-    const ref = db.collection(`users/${currentUser.uid}/memos`);
+    const ref = db.collection(`users/${currentUser.uid}/memoList`);
     ref.add({
       bodyText,
       updatedAt: new Date(),
