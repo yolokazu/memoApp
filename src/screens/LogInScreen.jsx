@@ -3,16 +3,20 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'reac
 import firebase from 'firebase';
 
 import Button from '../components/Button';
+import Loading from '../components/Loading';
 
 const LogInScreen = (props) => {
   const { navigation } = props;
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+  const [ isLoading, setIsLoading ] = useState(true);
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         navigateToList();
+      } else {
+        setIsLoading(false);
       }
     });
     return unsubscribe;
@@ -26,6 +30,7 @@ const LogInScreen = (props) => {
   };
 
   const handleOnPress = () => {
+    setIsLoading(true);
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         const { user } = userCredential;
@@ -35,11 +40,15 @@ const LogInScreen = (props) => {
       .catch((error) => {
         console.log(error.code, error.message);
         Alert.alert(error.message);
+      })
+      .then(() => {
+        setIsLoading(false);
       });
   };
 
   return (
     <View style={styles.container}>
+      <Loading isLoading={isLoading} />
       <View style={styles.inner}>
         <Text style={styles.title}>Log In</Text>
         <TextInput
