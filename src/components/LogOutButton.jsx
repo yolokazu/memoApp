@@ -17,7 +17,7 @@ const LogOutButton = () => {
     .catch((error) => {
       Alert.alert(error.message);
     });
-  };
+  }
 
   return (
     <TouchableOpacity onPress={handleOnPress} style={styles.container}>

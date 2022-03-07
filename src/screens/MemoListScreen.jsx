@@ -17,6 +17,7 @@ const MemoListScreen = (props) => {
   }, []);
 
   useEffect(() => {
+    console.log('useEffect');
     const db = firebase.firestore();
     const { currentUser } = firebase.auth();
     let unsubscribe = () => {};
@@ -25,7 +26,6 @@ const MemoListScreen = (props) => {
       unsubscribe = ref.onSnapshot((snapshot) => {
         const userMemoList = [];
         snapshot.forEach((doc) => {
-          console.log(doc.id, doc.data());
           const data = doc.data();
           userMemoList.push({
             id: doc.id,

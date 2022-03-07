@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert, FlatList } from 'react
 import { useNavigation } from '@react-navigation/native';
 import Icon from './Icon';
 import PropTypes from 'prop-types';
+import { dateToString } from '../utils';
 
 const MemoList = (props) => {
   const { memoList } = props;
@@ -11,11 +12,11 @@ const MemoList = (props) => {
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.memoListItem}
-      onPress={() => { navigation.navigate('Detail') }}
+      onPress={() => { navigation.navigate('Detail', { id: item.id }) }}
     >
       <View>
         <Text style={styles.memoListItemTitle} numberOfLines={1}>{item.bodyText}</Text>
-        <Text style={styles.memoListItemDate}>{String(item.updatedAt)}</Text>
+        <Text style={styles.memoListItemDate}>{dateToString(item.updatedAt)}</Text>
       </View>
       <TouchableOpacity
       style={styles.memoDelete}
