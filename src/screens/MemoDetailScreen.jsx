@@ -11,10 +11,8 @@ const MemoDetailScreen = (props) => {
   const { id } = route.params;
 
   const [ memo, setMemo ] = useState(null);
-  console.log(memo);
 
   useEffect(() => {
-    console.log('useEffect');
     const db = firebase.firestore();
     const { currentUser } = firebase.auth();
     let unsubscribe = () => {};
@@ -49,7 +47,7 @@ const MemoDetailScreen = (props) => {
         name='pencil'
         size={44}
         style={{ top: 60, bottom: 'auto' }}
-        onPress={() => { navigation.navigate('Edit') }}
+        onPress={() => { navigation.navigate('Edit', { id: memo.id, bodyText: memo.bodyText }) }}
       />
     </View>
   );
