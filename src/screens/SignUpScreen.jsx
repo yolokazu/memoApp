@@ -49,7 +49,7 @@ const SignUpScreen = (props) => {
         />
         <Button
           label='Submit'
-          onPress={handleOnPress}
+          onPress={() => { handleOnPress }}
         />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already resistered ?</Text>
